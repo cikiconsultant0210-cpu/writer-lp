@@ -1,0 +1,286 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="description" content="取材記事・インタビュー・オウンドメディア記事・書籍ライティングのご相談はこちら。">
+<title>中村 ライティング</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Shippori+Mincho+B1:wght@500;700;800&family=Zen+Kaku+Gothic+New:wght@400;500;700&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<style>
+/* Layout: 原稿用紙のマス目を背景に、縦書きの見出しと横組み本文を組み合わせた一段組み */
+:root {
+  --paper: #f7f8f6;
+  --paper-2: #eceee9;
+  --ink: #1d2533;
+  --ink-soft: #586173;
+  --grid: #d5dcd3;
+  --blue: #2a54a8;
+  --red: #c8432f;
+  --display: "Shippori Mincho B1", "Hiragino Mincho ProN", "Yu Mincho", serif;
+  --body: "Zen Kaku Gothic New", "Hiragino Sans", "Yu Gothic", sans-serif;
+  --mono: "IBM Plex Mono", ui-monospace, Menlo, monospace;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --paper: #14181f; --paper-2: #1c222b; --ink: #e8eaee; --ink-soft: #a3abb8;
+    --grid: #2a323d; --blue: #8fb0f0; --red: #ef8a78; color-scheme: dark;
+  }
+}
+:root[data-theme="dark"] {
+  --paper: #14181f; --paper-2: #1c222b; --ink: #e8eaee; --ink-soft: #a3abb8;
+  --grid: #2a323d; --blue: #8fb0f0; --red: #ef8a78; color-scheme: dark;
+}
+* { box-sizing: border-box; }
+body {
+  background: var(--paper); color: var(--ink);
+  font-family: var(--body); font-size: 16px; line-height: 1.9;
+  padding-inline: 20px; margin: 0;
+}
+.wrap { max-width: 980px; margin-inline: auto; }
+h1, h2, h3 { font-family: var(--display); text-wrap: balance; margin: 0; }
+p { margin: 0; }
+a { color: var(--blue); }
+a:focus-visible, button:focus-visible { outline: 2px solid var(--blue); outline-offset: 3px; }
+
+/* header */
+.top { display: flex; justify-content: space-between; align-items: center; gap: 16px; padding-block: 22px; flex-wrap: wrap; }
+.logo { font-family: var(--display); font-weight: 700; font-size: 18px; letter-spacing: .08em; }
+.nav { display: flex; gap: 20px; flex-wrap: wrap; font-size: 14px; }
+.nav a { color: var(--ink-soft); text-decoration: none; }
+.nav a:hover { color: var(--ink); }
+
+/* hero */
+.hero { display: grid; grid-template-columns: 1fr auto; gap: 40px; align-items: center; padding-block: 48px 72px; }
+.hero-text { min-width: 0; display: grid; gap: 24px; }
+.eyebrow { font-family: var(--mono); font-size: 12px; letter-spacing: .14em; color: var(--ink-soft); text-transform: uppercase; }
+.hero h1 { font-size: clamp(34px, 6vw, 60px); line-height: 1.35; font-weight: 800; }
+.hero h1 .mark { position: relative; white-space: nowrap; }
+.hero h1 .mark::after {
+  content: ""; position: absolute; left: -2px; right: -2px; bottom: .05em; height: .14em;
+  background: var(--red); opacity: .85; transform-origin: left; animation: draw .9s .3s ease-out both;
+}
+@keyframes draw { from { transform: scaleX(0); } to { transform: scaleX(1); } }
+.lead { color: var(--ink-soft); max-width: 34em; font-size: 17px; }
+.cta { display: flex; gap: 14px; flex-wrap: wrap; }
+.btn { display: inline-block; padding: 12px 22px; font-weight: 700; font-size: 15px; text-decoration: none; border: 1.5px solid var(--ink); color: var(--ink); background: transparent; }
+.btn.primary { background: var(--ink); color: var(--paper); }
+.btn:hover { transform: translateY(-1px); }
+
+/* 原稿用紙の縦書き */
+.genko {
+  writing-mode: vertical-rl; font-family: var(--display); font-size: 26px; font-weight: 500;
+  line-height: 1; letter-spacing: 0;
+  display: grid; grid-auto-flow: column; grid-template-rows: repeat(10, 44px); grid-auto-columns: 44px;
+  direction: ltr;
+  border: 1.5px solid var(--blue);
+}
+.genko span {
+  width: 44px; height: 44px; display: grid; place-items: center;
+  border-left: 1px solid var(--grid); border-bottom: 1px solid var(--grid); color: var(--ink);
+}
+.genko-wrap { display: grid; gap: 8px; justify-items: end; }
+.genko-note { font-family: var(--mono); font-size: 11px; color: var(--ink-soft); }
+
+/* sections */
+section.block { padding-block: 64px; border-top: 1px solid var(--grid); }
+.sec-head { display: flex; align-items: baseline; gap: 16px; margin-bottom: 36px; flex-wrap: wrap; }
+.sec-head h2 { font-size: clamp(26px, 4vw, 34px); font-weight: 700; }
+.sec-head .eyebrow { order: -1; }
+
+/* about */
+.about { display: grid; grid-template-columns: 200px 1fr; gap: 40px; }
+.portrait {
+  aspect-ratio: 4 / 5; max-width: 100%; background:
+    repeating-linear-gradient(0deg, var(--grid) 0 1px, transparent 1px 20px),
+    repeating-linear-gradient(90deg, var(--grid) 0 1px, transparent 1px 20px), var(--paper-2);
+  display: grid; place-items: center; font-family: var(--display); font-size: 56px; color: var(--ink-soft);
+}
+.about-body { display: grid; gap: 18px; max-width: 38em; min-width: 0; }
+.facts { display: flex; gap: 32px; flex-wrap: wrap; padding-top: 8px; }
+.fact { display: grid; }
+.fact b { font-family: var(--mono); font-size: 28px; font-weight: 500; font-variant-numeric: tabular-nums; }
+.fact span { font-size: 13px; color: var(--ink-soft); }
+
+/* services */
+.services { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 0; border-top: 1.5px solid var(--ink); }
+.svc { padding: 28px 24px 28px 0; border-bottom: 1px solid var(--grid); display: grid; gap: 10px; align-content: start; }
+.svc:nth-child(even) { padding: 28px 0 28px 24px; border-left: 1px solid var(--grid); }
+.svc h3 { font-size: 21px; font-weight: 700; }
+.svc p { color: var(--ink-soft); font-size: 15px; }
+.svc .unit { font-family: var(--mono); font-size: 12px; color: var(--blue); }
+
+/* process */
+.flow { list-style: none; padding: 0; margin: 0; display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 16px; counter-reset: s; }
+.flow li { counter-increment: s; display: grid; gap: 8px; align-content: start; padding-top: 14px; border-top: 2px solid var(--ink); }
+.flow li::before { content: "0" counter(s); font-family: var(--mono); font-size: 12px; color: var(--blue); }
+.flow b { font-family: var(--display); font-size: 18px; }
+.flow span { font-size: 14px; color: var(--ink-soft); line-height: 1.7; }
+
+/* price */
+.price-wrap { overflow-x: auto; }
+table.price { width: 100%; border-collapse: collapse; font-size: 15px; min-width: 520px; }
+.price th, .price td { text-align: left; padding: 16px 12px; border-bottom: 1px solid var(--grid); vertical-align: top; }
+.price th { font-weight: 500; font-size: 12px; color: var(--ink-soft); letter-spacing: .08em; border-bottom: 1.5px solid var(--ink); }
+.price td.num { font-family: var(--mono); font-variant-numeric: tabular-nums; white-space: nowrap; }
+.price td small { display: block; color: var(--ink-soft); font-size: 13px; }
+.note { font-size: 13px; color: var(--ink-soft); margin-top: 16px; }
+
+/* contact */
+.contact { background: var(--ink); color: var(--paper); padding: 48px clamp(20px, 5vw, 56px); display: grid; gap: 20px; }
+.contact h2 { font-size: clamp(26px, 4vw, 36px); }
+.contact p { opacity: .8; max-width: 34em; }
+.mail { display: flex; gap: 12px; align-items: center; flex-wrap: wrap; }
+.mail code { font-family: var(--mono); font-size: 18px; user-select: all; word-break: break-all; }
+.mail a { color: var(--paper); }
+.copy { font: inherit; font-size: 13px; padding: 6px 14px; background: transparent; color: var(--paper); border: 1px solid currentColor; cursor: pointer; }
+
+footer { padding-block: 32px 48px; font-size: 13px; color: var(--ink-soft); display: flex; justify-content: space-between; gap: 12px; flex-wrap: wrap; }
+
+@media (max-width: 760px) {
+  .hero { grid-template-columns: 1fr; padding-block: 24px 48px; }
+  .genko-wrap { justify-items: start; }
+  .genko { grid-template-rows: repeat(10, 30px); grid-auto-columns: 30px; font-size: 18px; }
+  .genko span { width: 30px; height: 30px; }
+  .about { grid-template-columns: 1fr; }
+  .portrait { max-width: 180px; }
+  .services { grid-template-columns: 1fr; }
+  .svc, .svc:nth-child(even) { padding: 24px 0; border-left: 0; }
+  .flow { grid-template-columns: 1fr; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .hero h1 .mark::after { animation: none; }
+  .btn:hover { transform: none; }
+}
+</style>
+</head>
+<body>
+
+<div class="wrap">
+  <header class="top">
+    <div class="logo">中村 ライティング</div>
+    <nav class="nav" aria-label="ページ内リンク">
+      <a href="#about">プロフィール</a>
+      <a href="#service">できること</a>
+      <a href="#flow">ご依頼の流れ</a>
+      <a href="#price">料金</a>
+      <a href="#contact">お問い合わせ</a>
+    </nav>
+  </header>
+
+  <section class="hero">
+    <div class="hero-text">
+      <div class="eyebrow">Writer / Editor</div>
+      <h1>話を聞いて、<br><span class="mark">伝わる文章</span>に<br>仕立てます。</h1>
+      <p class="lead">取材記事、インタビュー、オウンドメディアの記事から書籍まで。読み手が最後まで読み、行動したくなる原稿を、構成から校正まで一人で責任をもってお届けします。</p>
+      <div class="cta">
+        <a class="btn primary" href="#contact">相談してみる</a>
+        <a class="btn" href="#service">できることを見る</a>
+      </div>
+    </div>
+    <div class="genko-wrap" aria-hidden="true">
+      <div class="genko" id="genko"></div>
+      <div class="genko-note">20字 × 10行 ＝ 200字</div>
+    </div>
+  </section>
+
+  <section class="block" id="about">
+    <div class="sec-head"><div class="eyebrow">Profile</div><h2>プロフィール</h2></div>
+    <div class="about">
+      <div class="portrait" aria-label="プロフィール写真（差し替え予定）">中</div>
+      <div class="about-body">
+        <h3 style="font-size:22px">中村（ライター）</h3>
+        <p>企業・個人の想いを、言葉にして届けるライターです。経営者や専門家へのインタビュー、サービス紹介記事、採用ページの原稿などを中心に執筆しています。</p>
+        <p>大切にしているのは「話し手の言葉の温度を残すこと」と「読み手が迷わない構成」。取材前の下調べから構成案づくり、納品後の修正まで、ていねいに伴走します。</p>
+        <div class="facts">
+          <div class="fact"><b>○○年</b><span>ライター歴</span></div>
+          <div class="fact"><b>○○○本</b><span>執筆した記事</span></div>
+          <div class="fact"><b>○○名</b><span>インタビューした方</span></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="block" id="service">
+    <div class="sec-head"><div class="eyebrow">Service</div><h2>できること</h2></div>
+    <div class="services">
+      <div class="svc"><span class="unit">3,000〜6,000字</span><h3>取材・インタビュー記事</h3><p>経営者、専門家、社員の方へのインタビューを、人柄が伝わる読みものにまとめます。オンライン取材にも対応しています。</p></div>
+      <div class="svc"><span class="unit">2,000〜5,000字</span><h3>オウンドメディア・SEO記事</h3><p>検索意図を踏まえた構成で、読まれて問い合わせにつながる記事を書きます。キーワード選定からご相談いただけます。</p></div>
+      <div class="svc"><span class="unit">1ページ〜</span><h3>Webサイト・LPの原稿</h3><p>サービス紹介、会社案内、採用ページなど。強みを整理するヒアリングから入り、そのまま使える原稿に仕上げます。</p></div>
+      <div class="svc"><span class="unit">80,000字〜</span><h3>書籍・ブックライティング</h3><p>著者の方へ数回に分けて取材し、一冊分の原稿にまとめます。企画書づくりからお手伝いできます。</p></div>
+    </div>
+  </section>
+
+  <section class="block" id="flow">
+    <div class="sec-head"><div class="eyebrow">Flow</div><h2>ご依頼の流れ</h2></div>
+    <ol class="flow">
+      <li><b>ご相談</b><span>目的、読者、文字数、締切をうかがいます。お見積もりは無料です。</span></li>
+      <li><b>構成案</b><span>見出しと要点をまとめた構成案をお出しし、方向性をすり合わせます。</span></li>
+      <li><b>取材・調査</b><span>インタビューや資料の読み込みを行います。</span></li>
+      <li><b>執筆</b><span>初稿をお送りします。修正は2回まで料金内で対応します。</span></li>
+      <li><b>校正・納品</b><span>表記ゆれや事実関係を確認し、ご指定の形式で納品します。</span></li>
+    </ol>
+  </section>
+
+  <section class="block" id="price">
+    <div class="sec-head"><div class="eyebrow">Price</div><h2>料金の目安</h2></div>
+    <div class="price-wrap">
+      <table class="price">
+        <thead><tr><th>メニュー</th><th>料金（税別）</th><th>含まれるもの</th></tr></thead>
+        <tbody>
+          <tr><td>取材・インタビュー記事</td><td class="num">¥○○,○○○〜</td><td>取材60分、構成案、執筆、修正2回<small>交通費は別途いただきます</small></td></tr>
+          <tr><td>オウンドメディア・SEO記事</td><td class="num">¥○○,○○○〜</td><td>構成案、執筆、修正2回</td></tr>
+          <tr><td>Webサイト・LPの原稿</td><td class="num">¥○○,○○○〜</td><td>ヒアリング、原稿一式、修正2回</td></tr>
+          <tr><td>書籍・ブックライティング</td><td class="num">個別にお見積もり</td><td>企画相談、取材、全編執筆</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p class="note">文字数・取材の有無・納期によって変わります。まずはお気軽にご相談ください。</p>
+  </section>
+
+  <section class="block" id="contact" style="border-top:0">
+    <div class="contact">
+      <div class="eyebrow" style="color:inherit;opacity:.7">Contact</div>
+      <h2>まずは、お話を聞かせてください。</h2>
+      <p>「何を書けばいいかまだ決まっていない」という段階でも大丈夫です。2営業日以内にお返事します。</p>
+      <div class="mail">
+        <code id="mail">your-address@example.com</code>
+        <button class="copy" id="copy" type="button">アドレスをコピー</button>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <span>© 中村 ライティング</span>
+    <a href="#">ページの先頭へ</a>
+  </footer>
+</div>
+
+<script>
+(function () {
+  var text = "言葉の温度を残して、読み手に届ける。";
+  var cols = 2, rows = 10, total = cols * rows;
+  var g = document.getElementById("genko");
+  for (var i = 0; i < total; i++) {
+    var s = document.createElement("span");
+    s.textContent = text[i] || "";
+    g.appendChild(s);
+  }
+  var btn = document.getElementById("copy");
+  btn.addEventListener("click", function () {
+    var addr = document.getElementById("mail").textContent;
+    var done = function () { btn.textContent = "コピーしました"; setTimeout(function () { btn.textContent = "アドレスをコピー"; }, 2000); };
+    try {
+      navigator.clipboard.writeText(addr).then(done, function () { selectMail(); });
+    } catch (e) { selectMail(); }
+  });
+  function selectMail() {
+    var r = document.createRange(); r.selectNodeContents(document.getElementById("mail"));
+    var sel = window.getSelection(); sel.removeAllRanges(); sel.addRange(r);
+    btn.textContent = "選択しました（⌘Cでコピー）";
+  }
+})();
+</script>
+</body>
+</html>
